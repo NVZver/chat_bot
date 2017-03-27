@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.messages .collection{
+    min-height: 250px;
+}
+
 .message {
     background-color: #e0f2f1 !important;
     border-radius: 5px !important;
