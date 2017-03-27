@@ -1,10 +1,60 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="chatApp">
 <head>
     <meta charset="UTF-8">
     <title>Chat bot</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/css/style.css' %}">
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
 </head>
-<body>
+<body ng-controller="chatCtl">
+{% verbatim %}
+
+
+<nav class="teal">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Chat bot</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card chat">
+                <div class="card-content">
+                    <div class="row content">
+                        <div class="messages">
+                            <div class="collection">
+
+                                <div ng-repeat="message in messages" class="row">
+                                <div class="collection-item" ng-class="message.type">
+                                    <span class="title">{{ message.sender }}</span>
+                                    <p>{{ message.text }}</p>
+                                </div></div>
+                            </div>
+                        </div>
+                        <div class="send-message">
+
+                            <input type="text" ng-model="message">
+                            <button class="btn waves-effect waves-light" type="submit"
+                                    name="action" ng-click="sendMessage()">Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endverbatim %}
+    <script src="{% static 'static/js/chat.js' %}"></script>
 
 </body>
 </html>
