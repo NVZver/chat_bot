@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+def get_path_array_to(dir_name):
+    listDir = os.listdir()
+    templates = []
+    for dir in listDir:
+        if (dir == dir_name):
+            templates.append(os.path.abspath(dir).replace('\\', '/'))
+        else:
+            if os.path.isdir(dir):
+                if dir != '.git':
+                    templates.append(os.path.join(os.path.abspath(dir), dir_name).replace('\\', '/'))
+    return templates
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bot',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +67,7 @@ ROOT_URLCONF = 'chat_bot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': get_path_array_to('templates'),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,5 +129,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATICFILES_DIRS = [('static', os.path.abspath('static').replace('\\', '/'))]
 
 STATIC_URL = '/static/'
