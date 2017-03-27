@@ -17,6 +17,7 @@
                 url: '/send/',
                 dataType: "json",
                 data: {
+                    user: 'Random user',
                     message: $scope.message
                 },
                 success: function (res) {
