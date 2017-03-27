@@ -1,14 +1,28 @@
-.content{
+.content {
     display: flex;
     flex-direction: column;
 }
 
-.message{
-    background: red;
+.message {
+    background-color: #e0f2f1 !important;
+    border-radius: 5px !important;
+    max-width: 40%;
+    margin: 20px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .server-message {
-    background: green;
+    background-color: #b2dfdb !important;
+    border-radius: 5px !important;
+    max-width: 40%;
+    min-width: 40%;
+    margin: 20px !important;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .send-message {
@@ -16,9 +30,16 @@
     justify-content: space-around;
 }
 
-.send-message input{
+.collection-item .title {
+    color: #42648b;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+}
+
+.send-message input {
     flex-basis: 70%;
 }
-.send-message button{
+
+.send-message button {
     flex-basis: 20%;
 }
