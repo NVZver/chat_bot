@@ -25,18 +25,24 @@
 
 <div class="container">
     <div class="row">
-        <div class="col s12">
+        <div class="col s8 offset-s2">
             <div class="card chat">
                 <div class="card-content">
                     <div class="row content">
                         <div class="messages">
                             <div class="collection">
+                                <div id="items" class="items">
+                                    <div ng-repeat="message in messages" class="row message-wrapper">
+                                        <div class="collection-item" ng-class="message.type">
+                                            <span class="title">{{ message.sender }}</span>
+                                            <p>{{ message.text }}</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div ng-repeat="message in messages" class="row message-wrapper">
-                                <div class="collection-item" ng-class="message.type">
-                                    <span class="title">{{ message.sender }}</span>
-                                    <p>{{ message.text }}</p>
-                                </div></div>
+                                <div class="typing" ng-show="typing">
+                                    <span>Server is typing...</span>
+                                </div>
                             </div>
                         </div>
                         <div class="send-message">
@@ -56,7 +62,7 @@
 </div>
 
 {% endverbatim %}
-    <script src="{% static 'static/js/chat.js' %}"></script>
+<script src="{% static 'static/js/chat.js' %}"></script>
 
 </body>
 </html>
