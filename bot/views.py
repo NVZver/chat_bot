@@ -11,9 +11,9 @@ def get_chat(request):
 @csrf_exempt
 def send_message(request):
     if request.method == 'POST':
-        args = {
+        message = {
             "message": request.POST.get('message'),
             "type": request.POST.get('type'),
         }
 
-        return JsonResponse(args)
+        return JsonResponse(message)
